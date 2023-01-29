@@ -1,24 +1,28 @@
+import express from 'express';
+import cors, { CorsRequest } from 'cors';
 import { ApolloServer, BaseContext } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
 import { logger } from './Logger';
 import { typeDefs } from './config/schema';
+import { resolvers } from './resolvers/Verify';
 
 export default class App {
-  private app: ApolloServer<BaseContext>;
+  private app: express.Application;
+  private graphqlServer: ApolloServer<BaseContext>;
 
   constructor() {
-    this.app = new ApolloServer({
+    this.app = express();
+    this.graphqlServer = new ApolloServer({
       typeDefs,
-      resolvers: {
-        Query: {
-          helloworld: () => 'hello world!',
-        },
-      },
+      resolvers,
     });
   }
 
-  public async start(): Promise<void> {
-    const { url } = await startStandaloneServer(this.app);
-    logger.info(`server running at ${url}`);
+  public async start(PORT: number): Promise<void> {
+    await this.graphqlServer.start();
+    this.app.use(express.json());
+    this.app.use(cors<CorsRequest>());
+    this.app.use('/graphql', expressMiddleware(this.graphqlServer));
+    this.app.listen(PORT, () => logger.info(`Server running at port ${PORT}`));
   }
 }
