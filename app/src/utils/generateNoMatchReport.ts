@@ -1,5 +1,5 @@
 import * as constants from './constants';
-import { Args, Rules } from '../@types/reolvers/Args';
+import { Args, Rules } from '../@types/resolvers/Args';
 import { validateDigit } from './validateDigit';
 import { validateLowercase } from './validateLowercase';
 import { validateSize } from './validateSize';

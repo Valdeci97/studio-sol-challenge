@@ -1,5 +1,5 @@
-import { Args } from '../@types/reolvers/Args';
-import { VerifyQueryResponse } from '../@types/reolvers/VerifyQueryResponse';
+import { Args } from '../@types/resolvers/Args';
+import { VerifyQueryResponse } from '../@types/resolvers/VerifyQueryResponse';
 import { generateNoMatchReport } from '../utils/generateNoMatchReport';
 
 export const resolvers = {
