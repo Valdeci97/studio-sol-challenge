@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: studio_sol_app
+    build: .
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/home/node/app
