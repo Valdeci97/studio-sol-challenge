@@ -16,6 +16,8 @@ Feito para o desafio backend do studio sol.
 
 Você vai precisar ter instalado [Git](https://git-scm.com/downloads) e [Docker](https://docs.docker.com/engine/).
 
+- Caso queira rodar o projeto diretamente em sua máquina, você vai precisar ter instalado o [Node16+](https://nodejs.org/en/). Tutorial node estará no final deste aqrivo.
+
 Abra um terminal e clone o repositório - exemplo com chave SSH.
 
 ```
@@ -56,4 +58,38 @@ Rode o comando
 
 ```
 docker compose down
+```
+
+## Rodando o projeto em sua máquina local
+
+Abra um terminal e clone o repositório - exemplo com chave SSH.
+
+```
+git clone git@github.com:Valdeci97/studio-sol-challenge.git
+```
+
+Entre na pasta do projeto
+
+```
+cd studio-sol-challenge/app
+```
+
+Instale as depêndencias
+
+```
+npm install
+```
+
+Suba o servidor
+
+```
+npm run dev
+```
+
+Se nada de errado ocorreu, a aplicação estará rodando na sua máquina na porta 4000. Basta acessar http://localhost:4000/graphql.
+
+Para ver os testes automatizados
+
+```
+npm test
 ```
